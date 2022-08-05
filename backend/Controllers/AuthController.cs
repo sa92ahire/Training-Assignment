@@ -24,5 +24,11 @@ namespace backend.Controllers
        return Ok(response);
     }
 
+    [HttpPost("Login")]
+    public ActionResult<string> Login(UserRegisterDto request)
+    {
+      var response = _authRepo.Login(request.UserName, request.Password);
+      return Ok(response);
+    }
   }
 }

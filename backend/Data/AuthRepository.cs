@@ -13,7 +13,21 @@ namespace backend.Data
     }
     public string Login(string userName, string password)
     {
-      throw new System.NotImplementedException();
+        var response = string.Empty;
+        var user  = _context.Users.FirstOrDefault(x=>x.Username.ToLower().Equals(userName.ToLower()));
+        if(user==null)
+        {
+          return response;
+        }
+        else if(!VerifyPassword(password, user.PasswordHash, user.PasswordSalt))
+        {
+          return response;
+        }
+        else
+        {
+          response = user.Id.ToString();
+        }
+        return response;
     }
 
     public int Register(User user, string password)
@@ -48,6 +62,22 @@ namespace backend.Data
         {
             passwordSalt = hmac.Key;
             passwordHash = hmac.ComputeHash(System.Text.Encoding.UTF8.GetBytes(password));
+        }
+    }
+
+    private bool VerifyPassword(string password, byte[] passwordHash, byte[] passwordSalt)
+    {
+        using(var hmac= new System.Security.Cryptography.HMACSHA512(passwordSalt))
+        {
+          var computedHash = hmac.ComputeHash(System.Text.Encoding.UTF8.GetBytes(password));
+          for(int i=0; i < computedHash.Length; i++)
+          {
+            if(computedHash[i] != passwordHash[i])
+            {
+              return false;
+            }
+          }
+          return true;
         }
     }
   }
