@@ -9,13 +9,16 @@ C:\Angular Assignment\Loan-App\backend\bin\Debug\net5.0\ref\backend.dll
 C:\Angular Assignment\Loan-App\backend\bin\Debug\net5.0\backend.pdb
 C:\Angular Assignment\Loan-App\backend\bin\Debug\net5.0\AutoMapper.dll
 C:\Angular Assignment\Loan-App\backend\bin\Debug\net5.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+C:\Angular Assignment\Loan-App\backend\bin\Debug\net5.0\Humanizer.dll
 C:\Angular Assignment\Loan-App\backend\bin\Debug\net5.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 C:\Angular Assignment\Loan-App\backend\bin\Debug\net5.0\Microsoft.AspNetCore.Authentication.OpenIdConnect.dll
 C:\Angular Assignment\Loan-App\backend\bin\Debug\net5.0\Microsoft.Data.SqlClient.dll
 C:\Angular Assignment\Loan-App\backend\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.dll
 C:\Angular Assignment\Loan-App\backend\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+C:\Angular Assignment\Loan-App\backend\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Design.dll
 C:\Angular Assignment\Loan-App\backend\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Relational.dll
 C:\Angular Assignment\Loan-App\backend\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.SqlServer.dll
+C:\Angular Assignment\Loan-App\backend\bin\Debug\net5.0\dotnet-ef.dll
 C:\Angular Assignment\Loan-App\backend\bin\Debug\net5.0\Microsoft.Extensions.DependencyInjection.dll
 C:\Angular Assignment\Loan-App\backend\bin\Debug\net5.0\Microsoft.Identity.Client.dll
 C:\Angular Assignment\Loan-App\backend\bin\Debug\net5.0\Microsoft.IdentityModel.JsonWebTokens.dll
@@ -24,6 +27,7 @@ C:\Angular Assignment\Loan-App\backend\bin\Debug\net5.0\Microsoft.IdentityModel.
 C:\Angular Assignment\Loan-App\backend\bin\Debug\net5.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
 C:\Angular Assignment\Loan-App\backend\bin\Debug\net5.0\Microsoft.IdentityModel.Tokens.dll
 C:\Angular Assignment\Loan-App\backend\bin\Debug\net5.0\Microsoft.OpenApi.dll
+C:\Angular Assignment\Loan-App\backend\bin\Debug\net5.0\Newtonsoft.Json.dll
 C:\Angular Assignment\Loan-App\backend\bin\Debug\net5.0\Swashbuckle.AspNetCore.Swagger.dll
 C:\Angular Assignment\Loan-App\backend\bin\Debug\net5.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 C:\Angular Assignment\Loan-App\backend\bin\Debug\net5.0\Swashbuckle.AspNetCore.SwaggerUI.dll
@@ -59,7 +63,3 @@ C:\Angular Assignment\Loan-App\backend\obj\Debug\net5.0\backend.dll
 C:\Angular Assignment\Loan-App\backend\obj\Debug\net5.0\ref\backend.dll
 C:\Angular Assignment\Loan-App\backend\obj\Debug\net5.0\backend.pdb
 C:\Angular Assignment\Loan-App\backend\obj\Debug\net5.0\backend.genruntimeconfig.cache
-C:\Angular Assignment\Loan-App\backend\bin\Debug\net5.0\dotnet-ef.dll
-C:\Angular Assignment\Loan-App\backend\bin\Debug\net5.0\Newtonsoft.Json.dll
-C:\Angular Assignment\Loan-App\backend\bin\Debug\net5.0\Humanizer.dll
-C:\Angular Assignment\Loan-App\backend\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Design.dll

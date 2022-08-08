@@ -9,6 +9,7 @@ import { HttpClient } from "@angular/common/http";
 export class AuthService {
 
     constructor(private http:HttpClient){}
+    
     signup(email : string, password : string)
     {
      return this.http.post('https://localhost:5001/controller/Register',
@@ -18,6 +19,7 @@ export class AuthService {
         }
         );
     }
+
     login(email : string, password : string)
     {
      return this.http.post('https://localhost:5001/controller/Login',

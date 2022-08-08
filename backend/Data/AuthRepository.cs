@@ -1,5 +1,7 @@
+using System.Collections.Generic;
 using System.Linq;
 using backend.Model;
+using Microsoft.EntityFrameworkCore;
 
 namespace backend.Data
 {
@@ -11,23 +13,21 @@ namespace backend.Data
       _context = context;
 
     }
-    public string Login(string userName, string password)
+    public int Login(string userName, string password)
     {
-        var response = string.Empty;
         var user  = _context.Users.FirstOrDefault(x=>x.Username.ToLower().Equals(userName.ToLower()));
         if(user==null)
         {
-          return response;
+          return 0;
         }
-        else if(!VerifyPassword(password, user.PasswordHash, user.PasswordSalt))
+        if(VerifyPassword(password, user.PasswordHash, user.PasswordSalt))
         {
-          return response;
+          return user.Id;
         }
         else
         {
-          response = user.Id.ToString();
+          return 0;
         }
-        return response;
     }
 
     public int Register(User user, string password)
@@ -46,6 +46,12 @@ namespace backend.Data
         
         return user.Id;
     }
+
+    public List<Loan> LoanList(int userId)
+    {
+      return _context.Loans.Where(x=> x.User.Id==userId).ToList();
+    }
+
 
     public bool UserExists(string userName)
     {

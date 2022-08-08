@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using backend.Data;
 using backend.Dtos;
 using backend.Model;
@@ -6,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace backend.Controllers
 {
   [ApiController]
-  [Route("controller")]
+  [Route("[controller]")]
   public class AuthController : ControllerBase
   {
 
@@ -25,9 +26,16 @@ namespace backend.Controllers
     }
 
     [HttpPost("Login")]
-    public ActionResult<string> Login(UserRegisterDto request)
+    public ActionResult<int> Login(UserRegisterDto request)
     {
       var response = _authRepo.Login(request.UserName, request.Password);
+      return Ok(response);
+    }
+
+    [HttpGet("LoanList/{userId}")]
+    public ActionResult<List<Loan>> LoanList(int userId)
+    {
+      var response = _authRepo.LoanList(userId);
       return Ok(response);
     }
   }
