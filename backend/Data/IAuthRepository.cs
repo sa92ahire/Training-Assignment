@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using backend.Dtos;
 using backend.Model;
 
 namespace backend.Data
@@ -12,5 +13,7 @@ namespace backend.Data
          bool UserExists(string userName);
 
         public List<Loan> LoanList(int userId);
+
+        int AddLoan(AddUpdateLoanDto loanDto);
     }
 }

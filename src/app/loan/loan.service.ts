@@ -12,4 +12,16 @@ export class LoanService {
     {
      return this.http.get(`https://localhost:5001/Auth/LoanList/${userId}`);
     }
+
+  Addloan(fName : string, LName : string, pAddress : string, userId : number)
+   {
+     return this.http.post('https://localhost:5001/Auth/AddLoan',
+     {
+        "firstName": fName,
+        "lastName" : LName,
+        "propertyAddress" : pAddress,
+        "userId" : userId
+     }
+     );
+   }
 }

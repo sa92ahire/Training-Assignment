@@ -38,5 +38,12 @@ namespace backend.Controllers
       var response = _authRepo.LoanList(userId);
       return Ok(response);
     }
+
+    [HttpPost("AddLoan")]
+    public ActionResult<int> AddLoan(AddUpdateLoanDto request)
+    {
+      var response = _authRepo.AddLoan(request);
+       return Ok(response);
+    }
   }
 }

@@ -1,5 +1,6 @@
 <div class="container">
     <input style="border: 1px solid #ECECEC;" [(ngModel)] = "searchTerm" (ngModelChange) = "search()" placeholder="serach"/>
+    <button *ngIf="isadmin" class="btn btn-primary" type="button" (click)="RedirectToAddTab()">Add Loan</button>
     <table class="table">
       <thead>
         <tr>
@@ -13,9 +14,10 @@
           <td>{{loan.firstName}}</td>
           <td>{{loan.lastName}}</td>
           <td>{{loan.propertyAddress}}</td>
-          <td>Edit</td>
+          <td *ngIf="isadmin">Edit</td>
         </tr>
       </tbody>
     </table>
+    
   </div>
   

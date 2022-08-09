@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using backend.Dtos;
 using backend.Model;
 using Microsoft.EntityFrameworkCore;
 
@@ -85,6 +86,25 @@ namespace backend.Data
           }
           return true;
         }
+    }
+
+    public int AddLoan(AddUpdateLoanDto loanDto)
+    {
+      var user  = _context.Users.FirstOrDefault(x=>x.Id==loanDto.UserId);
+
+      var loan = new Loan{
+          LoanId = loanDto.LoanId,
+          FirstName = loanDto.FirstName,
+          LastName = loanDto.LastName,
+          PropertyAddress = loanDto.PropertyAddress,
+          UserId = loanDto.UserId
+      };
+
+      loan.User = user;
+      _context.Loans.Add(loan);
+      _context.SaveChanges();
+        
+      return loan.LoanId;
     }
   }
 }

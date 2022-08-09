@@ -1,1 +1,36 @@
-<p>loan-add works!</p>
+<form class="form-horizontal" #addForm="ngForm" (ngSubmit)="OnSubmit(addForm)">
+    <fieldset>
+    
+    <!-- Form Name -->
+    <legend>Add Loan</legend>
+    
+    <!-- Text input-->
+    <div class="form-group">
+      <label class="col-md-6 control-label" for="first_name">FIRST NAME</label>  
+      <div class="col-md-6">
+      <input id="first_name" ngModel name="firstName"
+      required placeholder="FIRST NAME" class="form-control input-md" required="" type="text">
+      </div>
+    </div> 
+    <!-- Text input-->
+    <div class="form-group">
+        <label class="col-md-6 control-label" for="last_name">LAST NAME</label>  
+        <div class="col-md-6">
+        <input id="last_name" ngModel name="lastName" placeholder="LAST NAME" class="form-control input-md" required="" type="text">
+        </div>
+      </div> 
+    <!-- Textarea -->
+    <div class="form-group">
+      <label class="col-md-6 control-label" for="property_address">Proparty Address</label>
+      <div class="col-md-6">                     
+        <textarea class="form-control" id="property_address" ngModel name="propertyAddress"></textarea>
+      </div>
+    </div>  
+    <div>
+        <button class="btn btn-primary" type="submit" [disabled]="!addForm.valid">Add</button> | 
+        <button class="btn btn-primary" type="button">Cancel</button>
+    </div>
+
+    </fieldset>
+    </form>
+    

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { LoanService } from '../loan.service';
 
 @Component({
@@ -10,9 +11,9 @@ export class LoanListComponent implements OnInit {
   lstloan : any;
   searchTerm : any;
   lstloanTemp : any;
-  isadmin : false;
+  isadmin : any = false;
   userId : number;
-  constructor(private loanservice:LoanService) {
+  constructor(private loanservice:LoanService, private router: Router) {
     
    }
 
@@ -28,11 +29,12 @@ export class LoanListComponent implements OnInit {
       // adding condition for just sample.
       this.lstloan = (  this.lstloan || [])?.map((obj) => {
         if(this.userId === 3002) {
+          this.isadmin = true;
           return { ...obj, role: "admin"};
         }
         return {...obj, role: "user" };
       });
-      console.log(this.lstloan);
+      
     },
     error=>{
       console.log(error);
@@ -45,6 +47,10 @@ export class LoanListComponent implements OnInit {
                 ||(tag.lastName.toLowerCase().indexOf(term)>=0)||
                 (tag.propertyAddress.toLowerCase().indexOf(term)>=0));
     }); 
-}
+  }
+  RedirectToAddTab()
+  {
+    this.router.navigate(['/loanAdd']);
+  }
 
 }
