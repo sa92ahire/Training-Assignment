@@ -1,1 +1,21 @@
-<p>loan-list works!</p>
+<div class="container">
+    <input style="border: 1px solid #ECECEC;" [(ngModel)] = "searchTerm" (ngModelChange) = "search()" placeholder="serach"/>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>First Name</th>
+          <th>Last Lame</th>
+          <th>Address</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let loan of lstloan">
+          <td>{{loan.firstName}}</td>
+          <td>{{loan.lastName}}</td>
+          <td>{{loan.propertyAddress}}</td>
+          <td>Edit</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
