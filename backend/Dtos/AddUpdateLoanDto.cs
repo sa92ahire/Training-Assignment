@@ -7,5 +7,6 @@ namespace backend.Dtos
         public string LastName { get; set; }
         public string PropertyAddress { get; set; }
         public int UserId { get; set; }
+        public bool IsAdd { get; set; }
     }
 }

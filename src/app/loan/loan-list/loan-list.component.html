@@ -14,7 +14,7 @@
           <td>{{loan.firstName}}</td>
           <td>{{loan.lastName}}</td>
           <td>{{loan.propertyAddress}}</td>
-          <td *ngIf="isadmin">Edit</td>
+          <td><a routerLink="/loanAdd" *ngIf="isadmin">Edit</a></td>
         </tr>
       </tbody>
     </table>

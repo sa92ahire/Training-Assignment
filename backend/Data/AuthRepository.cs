@@ -101,7 +101,14 @@ namespace backend.Data
       };
 
       loan.User = user;
-      _context.Loans.Add(loan);
+      if(loanDto.IsAdd)
+      {
+        _context.Loans.Add(loan);
+      }
+      else
+      {
+        _context.Loans.Update(loan);
+      }
       _context.SaveChanges();
         
       return loan.LoanId;

@@ -10,9 +10,14 @@ import { LoanService } from '../loan.service';
 })
 export class LoanAddComponent implements OnInit {
 
+  firstName : string;
+  lastName : string;
+  propertyAddress : string;
+  isAdd : boolean;
   constructor(private loanservice:LoanService,private router: Router) { }
 
   ngOnInit(): void {
+    this.firstName = "First";
   }
   OnSubmit(addForm : NgForm)
   {
@@ -20,13 +25,10 @@ export class LoanAddComponent implements OnInit {
     {
       return;
     }
-    const firstName = addForm.value.firstName;
-    const lastName = addForm.value.lastName;
-    const propertyAddress = addForm.value.propertyAddress;
+
     const userId = parseInt(localStorage.getItem("userId"));
 
-
-    this.loanservice.Addloan(firstName,lastName,propertyAddress,userId).subscribe(resData=>{
+    this.loanservice.Addloan(this.firstName,this.lastName,this.propertyAddress,userId,this.isAdd).subscribe(resData=>{
       if(resData!=0)
       {
           if(resData!=null)
