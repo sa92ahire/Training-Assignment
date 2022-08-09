@@ -12,7 +12,7 @@ export class AuthService {
     
     signup(email : string, password : string)
     {
-     return this.http.post('https://localhost:5001/controller/Register',
+     return this.http.post('https://localhost:5001/Auth/Register',
         {
             "userName": email,
             "password": password
@@ -22,7 +22,7 @@ export class AuthService {
 
     login(email : string, password : string)
     {
-     return this.http.post('https://localhost:5001/controller/Login',
+     return this.http.post('https://localhost:5001/Auth/Login',
         {
             "userName": email,
             "password": password

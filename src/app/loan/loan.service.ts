@@ -10,6 +10,6 @@ export class LoanService {
 
   loanlist(userId : number)
     {
-     return this.http.get(`https://localhost:5001/controller/LoanList/${userId}`);
+     return this.http.get(`https://localhost:5001/Auth/LoanList/${userId}`);
     }
 }

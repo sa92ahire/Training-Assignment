@@ -9,7 +9,9 @@ import { LoanService } from '../loan.service';
 export class LoanListComponent implements OnInit {
 
   
-  constructor(private loanservice:LoanService) { }
+  constructor(private loanservice:LoanService) {
+    
+   }
 
   ngOnInit(): void {
     let userId = localStorage.getItem("userId");

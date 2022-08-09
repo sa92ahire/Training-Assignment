@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -11,7 +12,7 @@ export class AppComponent {
   userId : any;
   
   constructor(private router:Router){
-    this.userId =localStorage.getItem("userId");
+     this.userId =localStorage.getItem("userId");
   }
   logout()
   {

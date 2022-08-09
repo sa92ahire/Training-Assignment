@@ -29,6 +29,11 @@ namespace backend
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors(options => options.AddDefaultPolicy(builder =>
+            {
+                builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
+            })) ;
+
             services.AddDbContext<DataContext>(options=>
             options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             
@@ -53,17 +58,19 @@ namespace backend
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "backend v1"));
             }
 
-             // global cors policy
-            app.UseCors(x => x
-                .AllowAnyMethod()
-                .AllowAnyHeader()
-                .SetIsOriginAllowed(origin => true) // allow any origin
-                .AllowCredentials()); // allow credentials
+            //  // global cors policy
+            // app.UseCors(x => x
+            //     .AllowAnyMethod()
+            //     .AllowAnyHeader()
+            //     .SetIsOriginAllowed(origin => true) // allow any origin
+            //     .AllowCredentials()); // allow credentials
 
 
             app.UseHttpsRedirection();
 
             app.UseRouting();
+             
+             app.UseCors();
 
             app.UseAuthorization();
 
