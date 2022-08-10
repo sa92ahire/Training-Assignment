@@ -23,26 +23,31 @@ export class LoanAddComponent implements OnInit {
   }
   LoadData()
   {
-    this.loanId = parseInt(localStorage.getItem("loanId"));
+    if(localStorage.getItem("loanId")!= null || localStorage.getItem("loanId") != undefined)
+    {
+      this.loanId = parseInt(localStorage.getItem("loanId"));
+    }
     if(this.loanId == 0 || this.loanId == undefined || this.loanId == null)
     {
       this.isAdd = true
     }
-    this.loanservice.LoanDetails(this.loanId).subscribe((resData: any)=>{
-      if(resData!=0)
-      {
-          if(resData!=null)
-          {
-            this.firstName = resData.firstName;
-            this.lastName = resData.lastName;
-            this.propertyAddress = resData.propertyAddress;
-            this.isAdd = false;
-          }
-          localStorage.removeItem("loanId");
-      }
-    },
-      error=> {console.log(error)}
-    )
+    else{
+      this.loanservice.LoanDetails(this.loanId).subscribe((resData: any)=>{
+        if(resData!=0)
+        {
+            if(resData!=null)
+            {
+              this.firstName = resData.firstName;
+              this.lastName = resData.lastName;
+              this.propertyAddress = resData.propertyAddress;
+              this.isAdd = false;
+            }
+            localStorage.removeItem("loanId");
+        }
+      },
+        error=> {console.log(error)}
+      )
+    }
   }
   OnSubmit(addForm : NgForm)
   {
