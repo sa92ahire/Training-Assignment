@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 
@@ -7,17 +7,23 @@ import { Observable } from 'rxjs';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'Loan-App';
   userId : any;
-  
+  // path: any = "";
   constructor(private router:Router){
      this.userId =localStorage.getItem("userId");
+    //  this.path = window.location.pathname;
+  }
+  ngOnInit(): void {
+    this.userId =localStorage.getItem("userId");
+
   }
   logout()
   {
-    localStorage.removeItem("userId");
     this.router.navigate(['/auth']);
+    localStorage.removeItem("userId");
+    window.location.reload();
 
   }
 }

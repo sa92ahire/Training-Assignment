@@ -17,7 +17,6 @@ export class JwtInterceptor implements HttpInterceptor {
         {
            if(request.url!="https://localhost:5001/Auth/Login")
            {
-            alert("PLease login");
             this.router.navigate(['/auth']);
            }
         }

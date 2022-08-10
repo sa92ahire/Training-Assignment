@@ -39,6 +39,7 @@ export class AuthComponent {
                         alert("User logged in successfully.");
                         this.isLoginMode = true;
                         this.router.navigate(['/loanList']);
+                        
                     }
                     else
                     {
@@ -58,6 +59,7 @@ export class AuthComponent {
                     {
                         alert("User registered successfully.");
                         this.isLoginMode = true;
+                        authForm.reset();
                     }
                     else
                     {

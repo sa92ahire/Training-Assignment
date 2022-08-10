@@ -20,9 +20,9 @@ export class LoanListComponent implements OnInit {
   ngOnInit(): void {
     this.userId = parseInt(localStorage.getItem("userId"));
     this.loanservice.loanlist(this.userId).subscribe((resData) => {
-      
       this.lstloan = resData;
       this.lstloanTemp = this.lstloan;
+      
 
       // assuming the role will come as string from backend like "admin"
       // if user is admin then setting the isadmin flag.
