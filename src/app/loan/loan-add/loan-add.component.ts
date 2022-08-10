@@ -10,14 +10,39 @@ import { LoanService } from '../loan.service';
 })
 export class LoanAddComponent implements OnInit {
 
-  firstName : string;
-  lastName : string;
-  propertyAddress : string;
+  firstName : any;
+  lastName : any;
+  propertyAddress : any;
   isAdd : boolean;
+  loanId : number;
+
   constructor(private loanservice:LoanService,private router: Router) { }
 
   ngOnInit(): void {
-    this.firstName = "First";
+    this.LoadData();
+  }
+  LoadData()
+  {
+    this.loanId = parseInt(localStorage.getItem("loanId"));
+    if(this.loanId == 0 || this.loanId == undefined || this.loanId == null)
+    {
+      this.isAdd = true
+    }
+    this.loanservice.LoanDetails(this.loanId).subscribe((resData: any)=>{
+      if(resData!=0)
+      {
+          if(resData!=null)
+          {
+            this.firstName = resData.firstName;
+            this.lastName = resData.lastName;
+            this.propertyAddress = resData.propertyAddress;
+            this.isAdd = false;
+          }
+          localStorage.removeItem("loanId");
+      }
+    },
+      error=> {console.log(error)}
+    )
   }
   OnSubmit(addForm : NgForm)
   {
@@ -28,12 +53,12 @@ export class LoanAddComponent implements OnInit {
 
     const userId = parseInt(localStorage.getItem("userId"));
 
-    this.loanservice.Addloan(this.firstName,this.lastName,this.propertyAddress,userId,this.isAdd).subscribe(resData=>{
+    this.loanservice.Addloan(this.firstName,this.lastName,this.propertyAddress,userId,this.isAdd,this.loanId).subscribe(resData=>{
       if(resData!=0)
       {
           if(resData!=null)
           {
-            alert("Load added successfully.");
+            alert("Saved successfully.");
             this.router.navigate(['/loanList'])
           }
       }

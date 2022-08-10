@@ -15,5 +15,7 @@ namespace backend.Data
         public List<Loan> LoanList(int userId);
 
         int AddLoan(AddUpdateLoanDto loanDto);
+
+        public Loan GetLoanDetails(int loanId);
     }
 }

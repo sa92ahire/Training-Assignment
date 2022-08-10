@@ -45,5 +45,12 @@ namespace backend.Controllers
       var response = _authRepo.AddLoan(request);
        return Ok(response);
     }
+
+    [HttpGet("LoanDetails/{loanId}")]
+    public ActionResult<Loan> LoanDetails(int loanId)
+    {
+      var response = _authRepo.GetLoanDetails(loanId);
+       return Ok(response);
+    }
   }
 }

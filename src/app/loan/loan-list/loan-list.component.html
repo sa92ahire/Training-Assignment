@@ -4,6 +4,7 @@
     <table class="table">
       <thead>
         <tr>
+          <th>Loan Id</th>
           <th>First Name</th>
           <th>Last Lame</th>
           <th>Address</th>
@@ -11,10 +12,11 @@
       </thead>
       <tbody>
         <tr *ngFor="let loan of lstloan">
+          <td>{{loan.loanId}}</td>
           <td>{{loan.firstName}}</td>
           <td>{{loan.lastName}}</td>
           <td>{{loan.propertyAddress}}</td>
-          <td><a routerLink="/loanAdd" *ngIf="isadmin">Edit</a></td>
+          <td><a routerLink="/loanAdd" *ngIf="isadmin" (click)="NavigateToEdit(loan.loanId)">Edit</a></td>
         </tr>
       </tbody>
     </table>

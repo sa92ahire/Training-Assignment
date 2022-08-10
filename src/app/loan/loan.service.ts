@@ -12,7 +12,7 @@ export class LoanService {
       return this.http.get(`https://localhost:5001/Auth/LoanList/${userId}`);
     }
 
-  Addloan(fName : string, LName : string, pAddress : string, userId : number, isAdd : boolean)
+  Addloan(fName : string, LName : string, pAddress : string, userId : number, isAdd : boolean, loanId : number)
    {
      return this.http.post('https://localhost:5001/Auth/AddLoan',
      {
@@ -20,8 +20,14 @@ export class LoanService {
         "lastName" : LName,
         "propertyAddress" : pAddress,
         "userId" : userId,
-        "isAdd" : isAdd
+        "isAdd" : isAdd,
+        "loanId" : loanId
      }
      );
+   }
+
+   LoanDetails(loanId : number)
+   {
+     return this.http.get(`https://localhost:5001/Auth/LoanDetails/${loanId}`);
    }
 }

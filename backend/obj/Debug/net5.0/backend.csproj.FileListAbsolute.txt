@@ -59,6 +59,7 @@ C:\Angular Assignment\Loan-App\backend\obj\Debug\net5.0\staticwebassets\backend.
 C:\Angular Assignment\Loan-App\backend\obj\Debug\net5.0\staticwebassets\backend.StaticWebAssets.xml
 C:\Angular Assignment\Loan-App\backend\obj\Debug\net5.0\scopedcss\bundle\backend.styles.css
 C:\Angular Assignment\Loan-App\backend\obj\Debug\net5.0\backend.RazorTargetAssemblyInfo.cache
+C:\Angular Assignment\Loan-App\backend\obj\Debug\net5.0\backend.csproj.CopyComplete
 C:\Angular Assignment\Loan-App\backend\obj\Debug\net5.0\backend.dll
 C:\Angular Assignment\Loan-App\backend\obj\Debug\net5.0\ref\backend.dll
 C:\Angular Assignment\Loan-App\backend\obj\Debug\net5.0\backend.pdb

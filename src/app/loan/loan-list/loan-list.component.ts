@@ -52,5 +52,9 @@ export class LoanListComponent implements OnInit {
   {
     this.router.navigate(['/loanAdd']);
   }
+  NavigateToEdit(loanId)
+  {
+    localStorage.setItem("loanId",loanId);
+  }
 
 }

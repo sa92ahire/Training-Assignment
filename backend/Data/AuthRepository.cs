@@ -92,26 +92,44 @@ namespace backend.Data
     {
       var user  = _context.Users.FirstOrDefault(x=>x.Id==loanDto.UserId);
 
-      var loan = new Loan{
+      if(loanDto.IsAdd)
+      {
+          Loan loan = new Loan{
           LoanId = loanDto.LoanId,
           FirstName = loanDto.FirstName,
           LastName = loanDto.LastName,
           PropertyAddress = loanDto.PropertyAddress,
           UserId = loanDto.UserId
-      };
+          };
+          loan.User = user;
 
-      loan.User = user;
-      if(loanDto.IsAdd)
-      {
         _context.Loans.Add(loan);
+        _context.SaveChanges();
+        
+        return loan.LoanId;
+        
       }
       else
       {
+         Loan loan  = _context.Loans.FirstOrDefault(x=>x.LoanId == loanDto.LoanId);
+         loan.FirstName = loanDto.FirstName;
+         loan.LastName = loanDto.LastName;
+         loan.PropertyAddress = loanDto.PropertyAddress;
+         loan.User = user;
+
         _context.Loans.Update(loan);
-      }
-      _context.SaveChanges();
+        _context.SaveChanges();
         
-      return loan.LoanId;
+        return loan.LoanId;
+        
+      }
+      
+    }
+
+    public Loan GetLoanDetails(int loanId)
+    {
+        var loanDetails  = _context.Loans.FirstOrDefault(x=>x.LoanId == loanId);
+        return loanDetails;
     }
   }
 }
