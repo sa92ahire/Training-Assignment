@@ -3,31 +3,36 @@ using System.Linq;
 using backend.Dtos;
 using backend.Model;
 using Microsoft.EntityFrameworkCore;
-
+using System.Security.Claims;
+using Microsoft.IdentityModel.Tokens;
+using System.IdentityModel.Tokens.Jwt;
+using Microsoft.Extensions.Configuration;
+using System.Globalization;
 namespace backend.Data
 {
   public class AuthRepository : IAuthRepository
   {
     private readonly DataContext _context;
-    public AuthRepository(DataContext context)
+    private readonly IConfiguration _config;
+    public AuthRepository(DataContext context, IConfiguration config)
     {
       _context = context;
-
+      _config = config;
     }
-    public int Login(string userName, string password)
+    public string Login(string userName, string password)
     {
         var user  = _context.Users.FirstOrDefault(x=>x.Username.ToLower().Equals(userName.ToLower()));
         if(user==null)
         {
-          return 0;
+          return "0";
         }
         if(VerifyPassword(password, user.PasswordHash, user.PasswordSalt))
         {
-          return user.Id;
+          return CreateToken(user);
         }
         else
         {
-          return 0;
+          return "0";
         }
     }
 
@@ -131,5 +136,31 @@ namespace backend.Data
         var loanDetails  = _context.Loans.FirstOrDefault(x=>x.LoanId == loanId);
         return loanDetails;
     }
+
+    private string CreateToken(User user)
+    {
+      List<Claim> claims = new List<Claim>{
+        new Claim(ClaimTypes.NameIdentifier,user.Id.ToString()),
+        new Claim(ClaimTypes.Name,user.Username)
+      };
+
+      SymmetricSecurityKey key = new SymmetricSecurityKey(System.Text.Encoding.UTF8.
+        GetBytes(_config.GetSection("AppSettings:Token").Value));
+
+      SigningCredentials creds = new SigningCredentials(key,SecurityAlgorithms.HmacSha512Signature);
+
+      SecurityTokenDescriptor toknDesc = new SecurityTokenDescriptor
+      {
+          Subject = new ClaimsIdentity(claims),
+          Expires = System.DateTime.Now.AddDays(1),
+          SigningCredentials =creds
+      };
+
+      JwtSecurityTokenHandler tokenHandler = new JwtSecurityTokenHandler();
+      SecurityToken token = tokenHandler.CreateToken(toknDesc);
+
+      return tokenHandler.WriteToken(token);
+    }
+
   }
 }

@@ -3,6 +3,7 @@ using backend.Data;
 using backend.Dtos;
 using backend.Model;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 
 namespace backend.Controllers
 {
@@ -26,12 +27,13 @@ namespace backend.Controllers
     }
 
     [HttpPost("Login")]
-    public ActionResult<int> Login(UserRegisterDto request)
+    public ActionResult<string> Login(UserRegisterDto request)
     {
       var response = _authRepo.Login(request.UserName, request.Password);
       return Ok(response);
     }
 
+    [Authorize]
     [HttpGet("LoanList/{userId}")]
     public ActionResult<List<Loan>> LoanList(int userId)
     {

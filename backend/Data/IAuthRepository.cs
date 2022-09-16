@@ -8,7 +8,7 @@ namespace backend.Data
     {
          int Register(User user, string password);
 
-         int Login(string userName, string password);
+         string Login(string userName, string password);
 
          bool UserExists(string userName);
 
